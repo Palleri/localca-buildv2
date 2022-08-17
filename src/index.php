@@ -37,20 +37,42 @@
     </table></p>
 </td>
 </form>
+<?php
+$CAnow = date("Y-m-d");
+$CAexpire = exec('sudo openssl x509 -in files/ca/ca.pem -noout -enddate');
+$CAregexp = '/[a-zA-Z]{3}\s+[0-9].*[0-9]{4}/';
+preg_match($CAregexp, $CAexpire, $CAmatches);
+$CAexpiredate = date('Y-m-d', strtotime($CAmatches[0]));
+
+$CAtxt = file_get_contents("/var/www/html/files/ca/ca.txt");
+$CAC = file_get_contents("/var/www/html/files/ca/C.txt");
+$CAO = file_get_contents("/var/www/html/files/ca/O.txt");
+$CAKEY_renew = file_get_contents("/var/www/html/files/ca/CA_KEY.txt");
+
+
+
+
+if (isset($_POST['carenew'])){
+	exec ('openssl x509 -x509toreq -in /var/www/html/files/ca/ca.pem -signkey /var/www/html/files/ca/ca.key -out /var/www/html/files/ca/new-ca.csr -passin pass:'.$CAKEY_renew.'');
+	exec ('echo | openssl x509 -req -days 1095 -in /var/www/html/files/ca/new-ca.csr -signkey /var/www/html/files/ca/ca.key -out /var/www/html/files/ca/ca-new.pem -passin pass:'.$CAKEY_renew.'');
+	exec ('cp /var/www/html/files/ca/ca-new.pem /var/www/html/files/ca.pem');
+	exec ('cp /var/www/html/files/ca/ca-new.pem /var/www/html/files/ca/ca.pem');
+	}
+
+
+?>
 
 
     <td><p><table class="tg" align=center border=0>
     <thead>
         <tr>
-            <th align="center" colspan="3"><form action="files/ca.pem"><input type="submit" value="Download CA certificate" /></form></th>
+	<th align="center" colspan="3"><form action="files/ca.pem"><input type="submit" value="Download CA certificate" /></form><form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>"><input type='submit' name='carenew' value='Renew CA'> <?php echo " " .$CAexpiredate; ?></td></form></th>
         <tr>
         </tr>
             <th colspan="3">Certificate files</th>
         <tr>
     </thead>
     <tbody>
-        
-    
         
 <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
 <?php
