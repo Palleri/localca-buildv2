@@ -53,6 +53,7 @@ $CAKEY_renew = file_get_contents("/var/www/html/files/ca/CA_KEY.txt");
 
 
 if (isset($_POST['carenew'])){
+	echo $CAKEY_renew;
 	exec ('openssl x509 -x509toreq -in /var/www/html/files/ca/ca.pem -signkey /var/www/html/files/ca/ca.key -out /var/www/html/files/ca/new-ca.csr -passin pass:'.$CAKEY_renew.'');
 	exec ('echo | openssl x509 -req -days 1095 -in /var/www/html/files/ca/new-ca.csr -signkey /var/www/html/files/ca/ca.key -out /var/www/html/files/ca/ca-new.pem -passin pass:'.$CAKEY_renew.'');
 	exec ('cp /var/www/html/files/ca/ca-new.pem /var/www/html/files/ca.pem');
