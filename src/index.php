@@ -66,7 +66,7 @@ if (isset($_POST['carenew'])){
     <td><p><table class="tg" align=center border=0>
     <thead>
         <tr>
-	<th align="center" colspan="3"><form action="files/ca.pem"><input type="submit" value="Download CA certificate" /></form><form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>"><input type='submit' name='carenew' value='Renew CA'> <?php echo " " .$CAexpiredate; ?></td></form></th>
+	<th align="center" colspan="3"><form action="files/ca.pem"><input type="submit" value="Download CA certificate" /></form><form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>"><input type='submit' name='carenew' value='Renew CA' onclick="return confirm('Are you sure you want to renew CA?')"> <?php echo " " .$CAexpiredate; ?></td></form></th>
         <tr>
         </tr>
             <th colspan="3">Certificate files</th>
