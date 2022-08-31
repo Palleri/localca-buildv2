@@ -26,7 +26,7 @@
   		</tr>
 	        <tr>
     		<th class="tg-0lax">Password</th>
-    		<th class="tg-0lax"><input type="text" name="password"></th>
+    		<th class="tg-0lax"><input type="password" name="password"></th>
   		</tr>
   		<tr>
     		<th class="tg-0lax"><input type="submit" value="Send Request"></th>
