@@ -15,5 +15,5 @@ COPY src /var/www/
 #COPY style.css /var/www/
 #COPY files /var/www/
 #COPY bg.jpg /var/www/
-RUN chown -R www-data:www-data /var/www/* 
+#RUN chown -R www-data:www-data /var/www/* 
 ENTRYPOINT ["/run.sh", "env"]
