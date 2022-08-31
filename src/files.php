@@ -77,11 +77,15 @@ $path    = 'files/'.$name.'';
 $files = scandir($path);
 $files = array_diff(scandir($path), array('.', '..', 'ca'));
 foreach($files as $file){
+    if (strpos($file, "pw") == false) {
     echo "<tr>";
     echo "<td><a href=files/$name/$file>$file</a><br></td>";
     echo "</tr>";
     echo "<tr>";
     echo "<td>";
+    
+    if (strpos($file, "p12") == false) {
+
     ?>
         <div class="bs-example">
             <div class="accordion" id="accordionExample">
@@ -97,11 +101,13 @@ foreach($files as $file){
                 </div>
 
     <?php
+    };
+    };
     echo "</td>";
     echo "</tr>";
 
 
-}
+};
 ?>
 
 
