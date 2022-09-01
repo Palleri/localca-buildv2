@@ -50,7 +50,7 @@
 ?>
 
 <div class="content">
-<h1><a href=index.php><?php echo $name;?></a></h1>
+<h1><a class="ca" href=index.php><?php echo $name;?></a></h1>
 <p><table border=0>
     <thead>
         <tr>

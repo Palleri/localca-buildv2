@@ -164,7 +164,7 @@ if(isset($_POST['Renew'])){
 <?php 
 // Show delete button if there is a file in files/
 if(!empty($file)) {
-echo "<td colspan='2'><input type='submit' name='Delete' value='Delete' onclick=\"return confirm('Are you sure you want to delete $file')\"> <input type='submit' name='Renew' value='Renew'></td>";
+echo "<td colspan='2'><input type='submit' name='Delete' value='Delete' onclick=\"return confirm('Are you sure you want to delete the certificate?')\"> <input type='submit' name='Renew' value='Renew'></td>";
 }
 ?>
 <tr>

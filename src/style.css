@@ -8,6 +8,9 @@
 a.ca { 
     color: white;
 }
+a.ca:hover {
+  color: white;
+}
 
 .card-ca {
   position: relative;
