@@ -3,7 +3,7 @@ cp /var/www/html/client_cert_san_ext.conf /var/www/html/$1.san.ext
 echo "DNS.1 = $1" >> /var/www/html/$1.san.ext
 ## Create CSR and sign with CA
 mkdir /var/www/html/files/$1
-echo $2 >> /var/www/html/files/$1/$2.pw
+echo $2 >> /var/www/html/files/$1/$1.pw
 openssl genrsa -out /var/www/html/files/$1/$1.key 2048
 openssl req -new -key /var/www/html/files/$1/$1.key -out /var/www/html/files/$1/$1.csr -subj /CN=$1
 openssl x509 -req -in /var/www/html/files/$1/$1.csr -CA /var/www/html/files/ca/ca.pem -CAkey /var/www/html/files/ca/ca.key -CAcreateserial -out /var/www/html/files/$1/$1.crt -days 365 -sha256 -passin pass:$3 -extfile /var/www/html/$1.san.ext
