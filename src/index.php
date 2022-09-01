@@ -38,7 +38,9 @@
 </td>
 </form>
 <?php
+//Set checkdate to now in $CAnow variable
 $CAnow = date("Y-m-d");
+//Check expire on CA cert
 $CAexpire = exec(' openssl x509 -in files/ca/ca.pem -noout -enddate');
 $CAregexp = '/[a-zA-Z]{3}\s+[0-9].*[0-9]{4}/';
 preg_match($CAregexp, $CAexpire, $CAmatches);
@@ -78,8 +80,10 @@ if (isset($_POST['carenew']))
 // Looking for files in files/
 $path    = 'files/';
 $files = scandir($path);
+//Set $files with everything in folder except '.', '..', 'ca', 'ca.pem'
 $files = array_diff(scandir($path), array('.', '..', 'ca', 'ca.pem'));
 foreach($files as $file){
+    //Set date to now
     $now = date("Y-m-d");
     $warning = date('Y-m-d', strtotime($now. ' + 60 days'));
     $expire = exec('openssl x509 -in files/'.$file.'/'.$file.'.crt -noout -enddate');
@@ -88,10 +92,11 @@ foreach($files as $file){
     $expiredate = date('Y-m-d', strtotime($matches[0]));
     if($now > $expiredate) {
 
-
+        //If dateexpire set color to red
         echo "<tr>";
         echo "<td><a href=files.php?name=$file>$file</a><br></th></td>";
         echo "<th style='color: red;'>$expiredate</th>";
+        //If date near set expire color to yellow
     }elseif($warning > $expiredate) {
         echo "<tr>";
         echo "<td><a href=files.php?name=$file>$file</a><br></th></td>";
@@ -124,21 +129,25 @@ if (isset($_POST['Delete'])){
     }
 } 
 
+//Rewnew Client or Server cert
 
 if(isset($_POST['Renew'])){
 
 
         $fileid = $_POST['fileid'];
+        //Check if POST is empty
         if(!empty($_POST['fileid'])){
             $CACA = file_get_contents("/var/www/html/files/ca/CA_NAME.txt");
             $CAKEY = file_get_contents("/var/www/html/files/ca/CA_KEY.txt");
             $p12_path = 'files/'.$fileid.'/'.$fileid.'.p12';
+            //If p12 exsist, renew client cert else create server cert
             if(file_exists($p12_path))
             {
                 $p12_pw = file_get_contents('/var/www/html/files/'.$fileid.'/'.$fileid.'.pw');
                 exec('script/renew_client.sh '.$fileid.' '.$CAKEY.' '.$p12_pw.'');
                 echo '<meta http-equiv="refresh" content="0; URL=index.php">';
             }
+            //Else
             else 
             {
                 exec('script/renew_server.sh '.$fileid.' '.$CAKEY.'');
@@ -180,7 +189,7 @@ $CAKEY = file_get_contents("/var/www/html/files/ca/CA_KEY.txt");
 if (isset($_POST['CN']) ){
 	$CN = $_POST['CN'];
 	$pw = $_POST['password'];
-        // If CN=empty return echo
+        // If CN=empty return alert
         if (empty($CN) || empty($pw)) {
         ?>
             <script>
@@ -192,7 +201,7 @@ if (isset($_POST['CN']) ){
         if(!empty($_POST['p12'])) {
             // Check if password is set when p12 is checked
             if(!empty($_POST['password'])) {
-                #Create client cert with san    
+                //Create client cert with san    
                 exec('script/create_client.sh '.$CN.' '.$pw.' '.$CAKEY.'');            
                 echo '<meta http-equiv="refresh" content="0; URL=index.php">';
 
