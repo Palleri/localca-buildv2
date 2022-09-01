@@ -5,6 +5,8 @@
   border-bottom: 1px solid rgba(0,0,0,.125);
 }
 
+
+
 .card-ca {
   position: relative;
   display: -ms-flexbox;
@@ -65,6 +67,18 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 1;
+  border-top: 1pxsolidrgba(0,0,0,.1);
+}
+
+hr.header1 {
+  border-top: 1px solid rgb(255, 255, 255);
+}
+
 
 .content {
   text-align: center;

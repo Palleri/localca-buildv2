@@ -41,15 +41,21 @@
     </head>
 <body>
 
-
-
+<?php
+  if( $_GET["name"] ) {
+    $name = $_GET['name'];
+}else {
+        echo '<meta http-equiv="refresh" content="0; URL=index.php">';
+        }
+?>
 
 <div class="content">
-<h1><a href=index.php>Certificate Web Request</a></h1>
+<h1><a href=index.php><?php echo $name;?></a></h1>
 <p><table border=0>
     <thead>
         <tr>
             <th colspan="2">Certificate files</th>
+            
         <tr>
     </thead>
     <tbody>
@@ -60,16 +66,11 @@
 <?php
 
 
-   if( $_GET["name"] ) {
-       $name = $_GET['name'];
-   }else {
-           echo '<meta http-equiv="refresh" content="0; URL=index.php">';
-           }
+ 
 ?>
-
-           <h2 class="mb-0">
-           <button type="button" class="btn-ca btn-link-ca" data-toggle="collapse" data-target="#collapseOne"><i class="fa fa-angle-right"></i> Show Base64-encoded</button>									
-       </h2>
+<hr class="header1">
+<br>        
+<h2 class="mb-0"><button type="button" class="btn-ca btn-link-ca" data-toggle="collapse" data-target="#collapseOne"><i class="fa fa-angle-right"></i> Show Base64-encoded</button></h2>
 <?php
 
 // Looking for files in files/

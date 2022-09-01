@@ -21,11 +21,11 @@
 		<tr>
 		</tr>
   		<tr>
-    		<th class="tg-0lax">CN</th>
+    		<th class="tg-0lax">FQDN (CN):</th>
 		<th class="tg-0lax"><input type="text" name="CN"></th>	
   		</tr>
 	        <tr>
-    		<th class="tg-0lax">Password</th>
+    		<th class="tg-0lax">Password:</th>
     		<th class="tg-0lax"><input type="password" name="password"></th>
   		</tr>
   		<tr>
@@ -66,7 +66,7 @@ if (isset($_POST['carenew']))
     <td><p><table class="tg" align=center border=0>
     <thead>
         <tr>
-	<th align="center" colspan="3"><form action="files/ca.pem"><input type="submit" value="Download CA certificate" /></form><form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>"><input type='submit' name='carenew' value='Renew CA' onclick="return confirm('Are you sure you want to renew CA?')"> <?php echo " " .$CAexpiredate; ?></td></form></th>
+	        <th align="center" colspan="3"><form action="files/ca.pem"><input type="submit" value="Download CA certificate" /></form><form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>"><input type='submit' name='carenew' value='Renew CA' onclick="return confirm('Are you sure you want to renew CA?')"> <?php echo " " .$CAexpiredate; ?></td></form></th>
         <tr>
         </tr>
             <th colspan="3">Certificate files</th>
@@ -164,14 +164,14 @@ if(isset($_POST['Renew'])){
 <?php 
 // Show delete button if there is a file in files/
 if(!empty($file)) {
-echo "<td colspan='2'><input type='submit' name='Delete' value='Delete'> <input type='submit' name='Renew' value='Renew'></td>";
+echo "<td colspan='2'><input type='submit' name='Delete' value='Delete' onclick=\"return confirm('Are you sure you want to delete $file')\"> <input type='submit' name='Renew' value='Renew'></td>";
 }
 ?>
 <tr>
 </tbody>
 </table></p>
 </td>
-  </tr>
+</tr>
 </thead>
 </table>
     </form>
