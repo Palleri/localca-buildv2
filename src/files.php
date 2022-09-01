@@ -80,7 +80,7 @@ $files = array_diff(scandir($path), array('.', '..', 'ca'));
 foreach($files as $file){
     if (strpos($file, "pw") == false) {
     echo "<tr>";
-    echo "<td><a href=files/$name/$file>$file</a><br></td>";
+    echo "<td><a class=\"ca\"href=files/$name/$file>$file</a><br></td>";
     echo "</tr>";
     echo "<tr>";
     echo "<td>";
