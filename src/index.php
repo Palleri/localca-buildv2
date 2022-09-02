@@ -1,6 +1,8 @@
 <html>
     <head>
+    <title>Certificate Authority</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favico.jpeg">
     </head>
 <body>
 
