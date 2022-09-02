@@ -39,6 +39,7 @@ cp /var/www/O.txt /var/www/html/files/ca/O.txt
 cp /var/www/index.php /var/www/html/index.php
 cp /var/www/style.css /var/www/html/style.css
 cp /var/www/bg.jpg /var/www/html/bg.jpg
+cp /var/www/favico.jpeg /var/www/html/favico.jpeg
 cp /var/www/files.php /var/www/html/files.php
 cp /var/www/server_cert_san_ext.conf /var/www/html/server_cert_san_ext.conf
 cp /var/www/client_cert_san_ext.conf /var/www/html/client_cert_san_ext.conf
