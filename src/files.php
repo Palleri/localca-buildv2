@@ -1,5 +1,7 @@
 <html>
     <head>
+    <title>Certificate Web Request</title>
+    <link rel="icon" href="favico.jpeg">
     <link rel="stylesheet" href="style.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
