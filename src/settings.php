@@ -23,7 +23,10 @@ if (isset($_POST['smtpserver']) ){
             </script>
         <?php
         } else {
-
+        if (!empty($_POST['sendto']) ){
+            $sendto = $_POST['sendto'];
+            file_put_contents("/var/www/html/script/sendto.txt", $sendto);
+            }
         if (!empty($_POST['smtpuser']) ){
             $smtpuser = $_POST['smtpuser'];
             exec('script/smtp.sh AuthUser='.$smtpuser.'');  
@@ -66,6 +69,10 @@ if (isset($_POST['smtpserver']) ){
         <table class="tg" border="0">
 
 <tbody align="left">
+  <tr>
+    <th>Send To: </th>
+    <td><input type="text" value ="" name="sendto"></td>
+  </tr>
   <tr>
     <th>SMTP Server: </th>
     <td><input type="text" value ="" name="smtpserver"></td><th>Format: mail.example.com:587</th>
