@@ -33,12 +33,19 @@
   		<tr>
     		<th class="tg-0lax"><input type="submit" value="Send Request"></th>
     		<th class="tg-0lax"><input type="checkbox" name="p12">Create client cert and convert to .p12?<br></th>
+            </form>
   		</tr>
-
+        <tr>
+        <th>
+        <form action="settings.php">
+        <input type="submit" value="Email Notification">
+        </form>
+        </th>
+        </tr>
     </tbody>
     </table></p>
 </td>
-</form>
+
 <?php
 //Set checkdate to now in $CAnow variable
 $CAnow = date("Y-m-d");

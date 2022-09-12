@@ -37,6 +37,7 @@ cp /var/www/ca.txt /var/www/html/files/ca/ca.txt
 cp /var/www/C.txt /var/www/html/files/ca/C.txt
 cp /var/www/O.txt /var/www/html/files/ca/O.txt
 cp /var/www/index.php /var/www/html/index.php
+cp /var/www/settings.php /var/www/html/settings.php
 cp /var/www/style.css /var/www/html/style.css
 cp /var/www/bg.jpg /var/www/html/bg.jpg
 cp /var/www/favico.jpeg /var/www/html/favico.jpeg
@@ -47,6 +48,13 @@ cp -r /var/www/script /var/www/html/
 chown -R www-data:www-data /var/www/html
 cp /var/www/html/files/ca/ca.pem /var/www/html/files/ca.pem
 chmod +x /var/www/html/script/*
+
+rm /etc/ssmtp/ssmtp.conf
+echo hostname=localca >> /etc/ssmtp/ssmtp.conf
+usermod -aG mail www-data
+chown root:mail /etc/ssmtp/ssmtp.conf
+chmod 665 /etc/ssmtp/ssmtp.conf
+
 
 #while :; do echo 'Hit CTRL+C'; sleep 1; done
 #/usr/local/sbin/php-fpm --nodaemonize

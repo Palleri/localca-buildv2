@@ -1,6 +1,6 @@
 FROM php:8.1.9-apache
 RUN apt update
-RUN apt install vim openssl sudo -y
+RUN apt install vim openssl ssmtp sudo -y
 #RUN apk add --update openssl sudo vim bash
 
 ENV ca=''
