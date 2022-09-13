@@ -12,6 +12,8 @@
 
 
 
+
+
 if (isset($_POST['smtpserver']) ){
 	$smtpserver = $_POST['smtpserver'];
     $reconf = "1";
@@ -23,6 +25,7 @@ if (isset($_POST['smtpserver']) ){
             </script>
         <?php
         } else {
+            file_put_contents("/var/www/html/script/smtpconfig.conf", "1");
         if (!empty($_POST['sendto']) ){
             $sendto = $_POST['sendto'];
             file_put_contents("/var/www/html/script/sendto.txt", $sendto);
@@ -49,6 +52,8 @@ if (isset($_POST['smtpserver']) ){
 
 
 
+
+
 ?>
 <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
 
@@ -65,7 +70,47 @@ if (isset($_POST['smtpserver']) ){
     <tbody>
         <tr>
     
-        
+
+<?php
+        $smtpconf = '/var/www/html/script/smtpconfig.conf';
+
+if (file_exists($smtpconf)) {
+    $smtpconfsettings = file_get_contents("/etc/ssmtp/ssmtp.conf"); 
+
+?>
+
+        <table class="tg" border="0">
+
+<tbody align="left">
+  <tr>
+    <th>Send To: </th>
+    <td><input type="text" value ="<?php echo $smtpconfsettings; ?>" name="sendto"></td>
+  </tr>
+  <tr>
+    <th>SMTP Server: </th>
+    <td><input type="text" value ="" name="smtpserver"></td><th>Format: mail.example.com:587</th>
+  </tr>
+  <tr>
+    <th>AuthUser: </th>
+    <td><input type="text" name="smtpuser"></td>
+  </tr>
+  <tr>
+    <th>AuthPass: </th>
+    <td><input type="text" name="smtppass"></td>
+  </tr>
+  <tr>
+    <th>UseTLS: </th>
+    <td><input type="checkbox" name="smtpusetls"></td>
+  </tr>
+  <tr>
+    <th>UseSTARTTLS: </th>
+    <td><input type="checkbox" name="smtpstarttls"></td>
+  </tr>
+  <tr>
+    <td><input type="submit" value="Save settings"></td>
+<?php
+}else {
+?>
         <table class="tg" border="0">
 
 <tbody align="left">
@@ -95,7 +140,9 @@ if (isset($_POST['smtpserver']) ){
   </tr>
   <tr>
     <td><input type="submit" value="Save settings"></td>
-  
+<?php
+}
+?>
   <tr>
 
     
