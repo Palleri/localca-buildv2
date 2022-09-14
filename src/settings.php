@@ -15,10 +15,29 @@
 
 
 if (isset($_POST['smtpserver']) ){
+    if (file_exists("/var/www/html/script/smtpserver.txt")) {
+    unlink('/var/www/html/script/smtpserver.txt');
+    }
+    if (file_exists("/var/www/html/script/sendto.txt")) {
+    unlink('/var/www/html/script/sendto.txt');
+    }
+    if (file_exists("/var/www/html/script/smtpuser.txt")) {
+    unlink('/var/www/html/script/smtpuser.txt');
+    }
+    if (file_exists("/var/www/html/script/smtppass.txt")) {
+    unlink('/var/www/html/script/smtppass.txt');
+    }
+    if (file_exists("/var/www/html/script/smtpusetls.txt")) {
+    unlink('/var/www/html/script/smtpusetls.txt');
+    }
+    if (file_exists("/var/www/html/script/smtpstarttls.txt")) {
+    unlink('/var/www/html/script/smtpstarttls.txt');
+    }
 	$smtpserver = $_POST['smtpserver'];
     $reconf = "1";
     exec('script/smtp.sh mailhub='.$smtpserver.' '.$reconf.'');
     file_put_contents("/var/www/html/script/smtpserver.txt", $smtpserver);
+    
     if (empty($smtpserver)) {
         ?>
             <script>
@@ -30,26 +49,31 @@ if (isset($_POST['smtpserver']) ){
         if (!empty($_POST['sendto']) ){
             $sendto = $_POST['sendto'];
             file_put_contents("/var/www/html/script/sendto.txt", $sendto);
+            
             }
         if (!empty($_POST['smtpuser']) ){
             $smtpuser = $_POST['smtpuser'];
             exec('script/smtp.sh AuthUser='.$smtpuser.'');  
             file_put_contents("/var/www/html/script/smtpuser.txt", $smtpuser);
+            
             }
         if (!empty($_POST['smtppass']) ){
             $smtppass = $_POST['smtppass'];
             exec('script/smtp.sh AuthPass='.$smtppass.'');  
             file_put_contents("/var/www/html/script/smtppass.txt", $smtppass);
+            
             }
         if (!empty($_POST['smtpusetls']) ){
             $smtpusetls = "YES";
             exec('script/smtp.sh UseTLS='.$smtpusetls.'');  
             file_put_contents("/var/www/html/script/smtpusetls.txt", $smtpusetls);
+            
             }
         if (!empty($_POST['smtpstarttls']) ){
             $smtpstarttls = "YES";
             exec('script/smtp.sh UseSTARTTLS='.$smtpstarttls.'');  
             file_put_contents("/var/www/html/script/smtpstarttls.txt", $smtpstarttls);
+            
             }
     }
 }
@@ -83,27 +107,68 @@ if (isset($_POST['smtpserver']) ){
 <tbody align="left">
   <tr>
     <th>Send To: </th>
-    <td><input type="text" value ="" name="sendto"></td>
+    <?php
+    if (file_exists("/var/www/html/script/sendto.txt")) {
+        $confsendto = file_get_contents("/var/www/html/script/sendto.txt");
+    echo "<td><input type=\"text\" value =\"$confsendto\" name=\"sendto\"></td>";
+    }else {
+    echo "<td><input type=\"text\" value =\"\" name=\"sendto\"></td>";
+    }?>
   </tr>
   <tr>
     <th>SMTP Server: </th>
-    <td><input type="text" value ="" name="smtpserver"></td><th>Format: mail.example.com:587</th>
+    <?php 
+     if (file_exists("/var/www/html/script/smtpserver.txt")) {
+        $confsmtpserver = file_get_contents("/var/www/html/script/smtpserver.txt");
+    echo "<td><input type=\"text\" value =\"$confsmtpserver\" name=\"smtpserver\"></td><th>Format: mail.example.com:587</th>";
+     }else {
+        echo "<td><input type=\"text\" value =\"\" name=\"smtpserver\"></td><th>Format: mail.example.com:587</th>";
+     }
+     ?>
   </tr>
   <tr>
     <th>AuthUser: </th>
-    <td><input type="text" name="smtpuser"></td>
+    <?php
+    if (file_exists("/var/www/html/script/smtpuser.txt")) {
+        $confsmtpuser = file_get_contents("/var/www/html/script/smtpuser.txt");
+    echo "<td><input type=\"text\" value=\"$confsmtpuser\" name=\"smtpuser\"></td>";
+    }else {
+        echo "<td><input type=\"text\" value=\"\" name=\"smtpuser\"></td>";
+    }
+    ?>
   </tr>
   <tr>
     <th>AuthPass: </th>
-    <td><input type="text" name="smtppass"></td>
+    <?php 
+    if (file_exists("/var/www/html/script/smtppass.txt")) {
+        $confsmtppass = file_get_contents("/var/www/html/script/smtppass.txt");
+    echo "<td><input type=\"text\" value=\"$confsmtppass\" name=\"smtppass\"></td>";
+    }else {
+        echo "<td><input type=\"text\" value=\"\" name=\"smtppass\"></td>";
+    }
+    ?>
   </tr>
   <tr>
-    <th>UseTLS: </th>
-    <td><input type="checkbox" name="smtpusetls"></td>
+    <th>Use TLS: </th>
+    <?php 
+    if (file_exists("/var/www/html/script/smtpusetls.txt")) {
+        $confsmtpusetls = file_get_contents("/var/www/html/script/smtpusetls.txt");
+    echo "<td><input type=\"checkbox\" name=\"smtpusetls\" checked></td>";
+    }else {
+        echo "<td><input type=\"checkbox\" name=\"smtpusetls\"></td>";
+    }
+    ?>
   </tr>
   <tr>
-    <th>UseSTARTTLS: </th>
-    <td><input type="checkbox" name="smtpstarttls"></td>
+    <th>Use STARTTLS: </th>
+    <?php
+    if (file_exists("/var/www/html/script/smtpstarttls.txt")) {
+        $confsmtpstarttls = file_get_contents("/var/www/html/script/smtpstarttls.txt");
+    echo "<td><input type=\"checkbox\" name=\"smtpstarttls\" checked></td>";
+    }else {
+        echo "<td><input type=\"checkbox\" name=\"smtpstarttls\"></td>";
+    }
+    ?>
   </tr>
   <tr>
     <td><input type="submit" value="Save settings"></td>
