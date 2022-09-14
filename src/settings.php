@@ -54,6 +54,7 @@ if (isset($_POST['smtpserver']) ){
         if (!empty($_POST['smtpuser']) ){
             $smtpuser = $_POST['smtpuser'];
             exec('script/smtp.sh AuthUser='.$smtpuser.'');  
+            exec('script/smtpfile.sh "From: '.$smtpuser.'"');  
             file_put_contents("/var/www/html/script/smtpuser.txt", $smtpuser);
             
             }
