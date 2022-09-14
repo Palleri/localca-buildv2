@@ -1,2 +1,0 @@
-Subject: SSL expire
-One of your SSL certificate will expire in 30 days
