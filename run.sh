@@ -60,4 +60,5 @@ chown root:root /etc/cron.daily/checkcert.sh
 chmod +x /etc/cron.daily/checkcert.sh
 #while :; do echo 'Hit CTRL+C'; sleep 1; done
 #/usr/local/sbin/php-fpm --nodaemonize
-apache2-foreground
+
+exec apache2-foreground
