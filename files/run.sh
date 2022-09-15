@@ -32,6 +32,13 @@ else
 fi
 
 
+#COPY run.sh /run.sh
+#COPY bin/* /etc/
+#COPY src /var/www/
+
+
+cp -R /tmp/bin /etc/
+cp -R /tmp/src/* /var/www/
 
 cp /var/www/ca.txt /var/www/html/files/ca/ca.txt
 cp /var/www/C.txt /var/www/html/files/ca/C.txt

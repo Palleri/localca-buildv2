@@ -1,17 +1,26 @@
 FROM php:8.1.9-apache
-RUN apt update && apt install vim openssl ssmtp systemd sudo iputils-ping -y
-#RUN apk add --update openssl sudo vim bash
-
 ENV ca='' \ 
 cakey_FILE='' \
-cakey=''
+cakey='' \
+TINI_VERSION='v0.19.0'
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN apt update && apt install vim openssl ssmtp systemd sudo iputils-ping -y && chmod +x /tini
+#RUN apk add --update openssl sudo vim bash
+
+
 #ENV cakey_FILE=''
 #ENV cakey=''
 #ENV C=''
 #ENV O=''
-COPY run.sh /run.sh
-COPY bin/* /etc/
-COPY src /var/www/
+
+COPY files /tmp
+
+
+#COPY run.sh /run.sh
+#COPY bin/* /etc/
+#COPY src /var/www/
+
+
 #COPY index.php /var/www/
 #COPY style.css /var/www/
 #COPY files /var/www/
@@ -19,11 +28,10 @@ COPY src /var/www/
 #RUN chown -R www-data:www-data /var/www/* 
 #ENTRYPOINT ["/run.sh", "env"]
 
-ENV TINI_VERSION v0.19.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
-RUN chmod +x /tini
+
+#RUN chmod +x /tini
 ENTRYPOINT ["/tini", "--"]
 
-CMD ["/run.sh", "env"]
+CMD ["/tmp/run.sh", "env"]
 
 
