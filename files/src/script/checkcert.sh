@@ -12,7 +12,7 @@ TodayPlus30=`date -ud "+30 day" | awk '{print $2, $3, $6}'`
 if [ "$CertExpires" = "$TodayPlus30" ]
 then
 sendto=`cat /var/www/html/script/sendto.txt`
-sendmail $sendto  < /var/www/html/script/certwarning.txt
+ssmtp $sendto  < /var/www/html/script/certwarning.txt
 
 fi
 
