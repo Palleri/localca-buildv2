@@ -72,4 +72,4 @@ ssl_verify_client on;
 
 ```
 
-<a href="https://github.com/palleri/localca-pub">Github Palleri/LocalCA</a>
+<a href="https://github.com/Palleri/localca-buildv2">Github Palleri/LocalCA</a>
