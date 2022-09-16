@@ -145,7 +145,7 @@ if (isset($_POST['smtpserver']) ){
         $confsmtppass = file_get_contents("/var/www/html/script/smtppass.txt");
     echo "<td><input type=\"text\" value=\"$confsmtppass\" name=\"smtppass\"></td>";
     }else {
-        echo "<td><input type=\"text\" value=\"\" name=\"smtppass\"></td>";
+        echo "<td><input type=\"password\" value=\"\" name=\"smtppass\"></td>";
     }
     ?>
   </tr>
