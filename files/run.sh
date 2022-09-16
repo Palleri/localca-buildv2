@@ -62,9 +62,9 @@ usermod -aG mail www-data
 chown root:mail /etc/ssmtp/ssmtp.conf
 chmod 665 /etc/ssmtp/ssmtp.conf
 
-mv /var/www/html/script/checkcert.sh /etc/cron.daily
-chown root:root /etc/cron.daily/checkcert.sh
-chmod +x /etc/cron.daily/checkcert.sh
+mv /var/www/html/script/checkcert /etc/cron.daily
+chown root:root /etc/cron.daily/checkcert
+chmod +x /etc/cron.daily/checkcert
 #while :; do echo 'Hit CTRL+C'; sleep 1; done
 #/usr/local/sbin/php-fpm --nodaemonize
 
