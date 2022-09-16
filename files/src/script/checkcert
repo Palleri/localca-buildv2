@@ -2,6 +2,11 @@
 
 
 
+
+if [ -e /var/www/html/script/sendto.txt ]
+then
+    
+
 #cd /var/www/html/files/
 for i in $(find /var/www/html/files/ -type f -name \*.crt);
 do
@@ -20,3 +25,5 @@ fi
 
 
 done
+
+fi
