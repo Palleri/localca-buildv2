@@ -17,6 +17,9 @@ echo $O > /var/www/O.txt
 if [ -d "/var/www/html/files/ca" ] 
 then
     echo "Found CA." 
+	cp /var/www/html/ssmtp.conf /etc/ssmtp/ssmtp.conf
+	chown root:mail /etc/ssmtp/ssmtp.conf
+	chmod 665 /etc/ssmtp/ssmtp.conf
 else
 	echo "First time install"
 	mkdir /var/www/html/files/
@@ -24,6 +27,13 @@ else
 	mkdir /var/www/html/script
 	echo -n $ca >> /var/www/html/files/ca/CA_NAME.txt
 	echo -n $cakey >> /var/www/html/files/ca/CA_KEY.txt
+	
+	rm /etc/ssmtp/ssmtp.conf
+	echo hostname=localca >> /etc/ssmtp/ssmtp.conf
+	usermod -aG mail www-data
+	chown root:mail /etc/ssmtp/ssmtp.conf
+	chmod 665 /etc/ssmtp/ssmtp.conf
+
 	openssl genrsa -des3 -out /var/www/html/files/ca/ca.key -passout pass:$cakey 2048
 	sleep 5s
 	openssl req -x509 -new -nodes -key /var/www/html/files/ca/ca.key -sha256 -days 1095 -out /var/www/html/files/ca/ca.pem -passin pass:$cakey     -subj "/CN=${ca}/C=${C}/O=${O}"
@@ -56,8 +66,8 @@ chown -R www-data:www-data /var/www/html
 cp /var/www/html/files/ca/ca.pem /var/www/html/files/ca.pem
 chmod +x /var/www/html/script/*
 
-rm /etc/ssmtp/ssmtp.conf
-echo hostname=localca >> /etc/ssmtp/ssmtp.conf
+#rm /etc/ssmtp/ssmtp.conf
+#echo hostname=localca >> /etc/ssmtp/ssmtp.conf
 usermod -aG mail www-data
 chown root:mail /etc/ssmtp/ssmtp.conf
 chmod 665 /etc/ssmtp/ssmtp.conf
