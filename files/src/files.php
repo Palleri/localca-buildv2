@@ -116,11 +116,11 @@ foreach($files as $file){
 
 
 
-<td>
+<th>
     <form>
         <input type="button" value="Go back" onclick="history.go(-1)">
     </form>
-</td>
+</th>
 <tr>
 </tbody>
 </table></p>

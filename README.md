@@ -45,7 +45,8 @@ services:
 services:
   app:
   ....
-  - dns: 192.168.1.1
+    dns:
+      - 192.168.1.1
   ....
 ```
 
@@ -72,4 +73,8 @@ ssl_verify_client on;
 
 ```
 
+
 <a href="https://github.com/Palleri/localca-buildv2">Github Palleri/LocalCA</a>
+
+
+
