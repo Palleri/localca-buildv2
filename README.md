@@ -12,8 +12,22 @@
 
 -----------------------------------------------------------------------
 ## Docker image
+
+
 ### Aslong as the ca.pem remains in /var/www/html/files/ca the container will not install a new one
 ### To reinstall CA, delete folder ./data/files/ca
+
+Create a file or a secret with your cakey and mount it to the container.
+Use ENV:
+```yml
+environment:
+cakey_FILE=/run/secrets/cakey
+```
+Or
+```yml
+environment:
+cakey=supersecretpassword
+```
 
 ```yml
 version: '3.2'
@@ -34,10 +48,10 @@ services:
     volumes:
       - ./data:/var/www/html
     environment:
-      - ca=ca.local.local
+      - ca=ca.local.local # Name of the CA
       - cakey_FILE=/run/secrets/cakey
       - O=localca
-      - C=SE
+      - C=SE # Country code
 ```
 
 ### DNS settings for docker-compose.
