@@ -23,12 +23,12 @@ Create a file or a secret with your cakey and mount it to the container.
 Use ENV:
 ```yml
 environment:
-cakey_FILE=/run/secrets/cakey
+  - cakey_FILE=/run/secrets/cakey
 ```
 Or
 ```yml
 environment:
-cakey=supersecretpassword
+  - cakey=supersecretpassword
 ```
 
 -----------------------------------------------------------------------
