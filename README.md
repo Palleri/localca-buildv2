@@ -17,6 +17,8 @@
 ### Aslong as the ca.pem remains in /var/www/html/files/ca the container will not install a new one
 ### To reinstall CA, delete folder ./data/files/ca
 
+-----------------------------------------------------------------------
+
 Create a file or a secret with your cakey and mount it to the container.
 Use ENV:
 ```yml
@@ -28,6 +30,7 @@ Or
 environment:
 cakey=supersecretpassword
 ```
+
 -----------------------------------------------------------------------
 
 ### docker-compose.yml
