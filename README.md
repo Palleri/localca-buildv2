@@ -28,7 +28,9 @@ Or
 environment:
 cakey=supersecretpassword
 ```
+-----------------------------------------------------------------------
 
+### docker-compose.yml
 ```yml
 version: '3.2'
 secrets:
