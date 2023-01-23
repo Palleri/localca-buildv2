@@ -53,7 +53,7 @@ services:
     volumes:
       - ./data:/var/www/html
     environment:
-      - ca=ca.local.local # Name of the CA
+      - ca=ca.homelab.local # Name of the CA
       - cakey_FILE=/run/secrets/cakey
       - O=localca
       - C=SE # Country code
@@ -85,7 +85,7 @@ For more security:
 Create your client certificate .p12 and add it to your browser.
 Install ca.pem in your browser and nginx and activate ssl_verify_client on; 
 
-NGINX conf
+NGINX proxy manager conf
 ```
 ssl_client_certificate /etc/ssl/certs/ca.pem;
 ssl_verify_client on;
