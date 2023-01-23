@@ -53,7 +53,7 @@ services:
     volumes:
       - ./data:/var/www/html
     environment:
-      - ca=ca.homelab.local # Name of the CA
+      - ca=ca.homelab.local # Name of the CA including your domain (FQDN)
       - cakey_FILE=/run/secrets/cakey
       - O=localca
       - C=SE # Country code
