@@ -38,6 +38,7 @@ else
 	sleep 5s
 	openssl req -x509 -new -nodes -key /var/www/html/files/ca/ca.key -sha256 -days 1095 -out /var/www/html/files/ca/ca.pem -passin pass:$cakey     -subj "/CN=${ca}/C=${C}/O=${O}"
 	cp -R /tmp/src/* /var/www/
+	
 
 fi
 
@@ -49,7 +50,7 @@ fi
 
 cp -R /tmp/bin /etc/
 #cp -R /tmp/src/* /var/www/
-
+rm -rf /etc/cron.daily/*
 cp /var/www/ca.txt /var/www/html/files/ca/ca.txt
 cp /var/www/C.txt /var/www/html/files/ca/C.txt
 cp /var/www/O.txt /var/www/html/files/ca/O.txt
