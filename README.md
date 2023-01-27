@@ -13,6 +13,11 @@
 -----------------------------------------------------------------------
 ## Docker image
 
+-----------------------------------------------------------------------
+### Bugs and fixes
+
+1. <s>Cronjob not working properly</s> <b>(Fixed 2023-01-27)</b>
+-----------------------------------------------------------------------
 
 ### Aslong as the ca.pem remains in /var/www/html/files/ca the container will not install a new one
 ### To reinstall CA, delete folder ./data/files/ca
