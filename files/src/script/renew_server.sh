@@ -1,7 +1,4 @@
 #!/bin/bash
-
-
-
 cp /var/www/html/server_cert_san_ext.conf /var/www/html/$1.san.ext
 echo "DNS.1 = $1" >> /var/www/html/$1.san.ext
 openssl req -new -key /var/www/html/files/$1/$1.key -out /var/www/html/files/$1/$1.new.csr -subj /CN=$1

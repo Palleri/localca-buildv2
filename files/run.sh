@@ -43,13 +43,10 @@ else
 fi
 
 
-#COPY run.sh /run.sh
-#COPY bin/* /etc/
-#COPY src /var/www/
 
 
 cp -R /tmp/bin /etc/
-#cp -R /tmp/src/* /var/www/
+
 rm -rf /etc/cron.daily/*
 cp /var/www/ca.txt /var/www/html/files/ca/ca.txt
 cp /var/www/C.txt /var/www/html/files/ca/C.txt
@@ -67,8 +64,7 @@ chown -R www-data:www-data /var/www/html
 cp /var/www/html/files/ca/ca.pem /var/www/html/files/ca.pem
 chmod +x /var/www/html/script/*
 
-#rm /etc/ssmtp/ssmtp.conf
-#echo hostname=localca >> /etc/ssmtp/ssmtp.conf
+
 usermod -aG mail www-data
 chown root:mail /etc/ssmtp/ssmtp.conf
 chmod 665 /etc/ssmtp/ssmtp.conf
@@ -76,7 +72,6 @@ chmod 665 /etc/ssmtp/ssmtp.conf
 mv /var/www/html/script/checkcert /etc/cron.daily
 chown root:root /etc/cron.daily/checkcert
 chmod +x /etc/cron.daily/checkcert
-#while :; do echo 'Hit CTRL+C'; sleep 1; done
-#/usr/local/sbin/php-fpm --nodaemonize
+
 
 exec apache2-foreground

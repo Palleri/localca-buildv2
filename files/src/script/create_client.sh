@@ -12,7 +12,7 @@ sleep 2
 # #Convert .pem files to .p12
 openssl pkcs12 -export -out /var/www/html/files/$1/$1.p12 -in /var/www/html/files/$1/$1.crt -inkey /var/www/html/files/$1/$1.key -passout pass:$2
 sleep 2                    
-                    # Change permission on created files
+ # Change permission on created files
 chmod 666 /var/www/html/files/$1/$1.p12
 chmod 666 /var/www/html/files/$1/$1.key
 chmod 666 /var/www/html/files/$1/$1.csr
