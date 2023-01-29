@@ -4,7 +4,7 @@ cakey_FILE='' \
 cakey='' \
 TINI_VERSION='v0.19.0'
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
-RUN apt update && apt install vim openssl ssmtp systemd sudo iputils-ping -y && chmod +x /tini
+RUN apt update && apt install cron vim openssl ssmtp systemd sudo iputils-ping -y && chmod +x /tini
 
 COPY files /tmp
 

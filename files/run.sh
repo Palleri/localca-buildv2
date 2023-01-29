@@ -78,5 +78,6 @@ cp /var/www/html/script/checkcert /etc/cron.daily
 chown root:root /etc/cron.daily/checkcert
 chmod +x /etc/cron.daily/checkcert
 
+service cron start
 
 exec apache2-foreground

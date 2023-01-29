@@ -13,11 +13,11 @@ then
 sendto=`cat /var/www/html/script/sendto.txt`
 ssmtp $sendto  < /var/www/html/script/certwarning.txt
 
-else
-echo "$(date). Cron ran without error." >> /var/www/html/script/cron.log
+
 fi
 
 
 done
 
 fi
+echo "$(date). Cron ran without error." >> /var/www/html/script/cron.log
