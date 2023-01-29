@@ -54,11 +54,8 @@ else
 
 fi
 
-
-
-
 cp -R /tmp/bin /etc/
-
+cp /tmp/src/bg.jpg /var/www/html/bg.jpg
 rm -rf /etc/cron.daily/*
 cp /tmp/src/script/checkcert /var/www/html/script/checkcert
 cp /var/www/ca.txt /var/www/html/files/ca/ca.txt
