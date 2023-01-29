@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 if [ -z "$cakey"  -a -z "$cakey_FILE" ];  then
         echo >&2 'error: No cakey is specified '
         echo >&2 '  You need to specify one of cakey or cakey_FILE'
@@ -10,6 +8,11 @@ fi
 if [ ! -z "$cakey_FILE" -a -z "$cakey" ]; then
   cakey=$(cat $cakey_FILE)
 fi
+
+
+
+
+
 
 echo $ca > /var/www/ca.txt
 echo $C > /var/www//C.txt
@@ -38,7 +41,16 @@ else
 	sleep 5s
 	openssl req -x509 -new -nodes -key /var/www/html/files/ca/ca.key -sha256 -days 1095 -out /var/www/html/files/ca/ca.pem -passin pass:$cakey     -subj "/CN=${ca}/C=${C}/O=${O}"
 	cp -R /tmp/src/* /var/www/
-	
+
+	cp /var/www/index.php /var/www/html/index.php
+	cp /var/www/settings.php /var/www/html/settings.php
+	cp /var/www/style.css /var/www/html/style.css
+	cp /var/www/bg.jpg /var/www/html/bg.jpg
+	cp /var/www/favico.jpeg /var/www/html/favico.jpeg
+	cp /var/www/files.php /var/www/html/files.php
+	cp /var/www/server_cert_san_ext.conf /var/www/html/server_cert_san_ext.conf
+	cp /var/www/client_cert_san_ext.conf /var/www/html/client_cert_san_ext.conf
+	cp -r /var/www/script /var/www/html/
 
 fi
 
@@ -48,18 +60,11 @@ fi
 cp -R /tmp/bin /etc/
 
 rm -rf /etc/cron.daily/*
+cp /tmp/src/script/checkcert /var/www/html/script/checkcert
 cp /var/www/ca.txt /var/www/html/files/ca/ca.txt
 cp /var/www/C.txt /var/www/html/files/ca/C.txt
 cp /var/www/O.txt /var/www/html/files/ca/O.txt
-cp /var/www/index.php /var/www/html/index.php
-cp /var/www/settings.php /var/www/html/settings.php
-cp /var/www/style.css /var/www/html/style.css
-cp /var/www/bg.jpg /var/www/html/bg.jpg
-cp /var/www/favico.jpeg /var/www/html/favico.jpeg
-cp /var/www/files.php /var/www/html/files.php
-cp /var/www/server_cert_san_ext.conf /var/www/html/server_cert_san_ext.conf
-cp /var/www/client_cert_san_ext.conf /var/www/html/client_cert_san_ext.conf
-cp -r /var/www/script /var/www/html/
+
 chown -R www-data:www-data /var/www/html
 cp /var/www/html/files/ca/ca.pem /var/www/html/files/ca.pem
 chmod +x /var/www/html/script/*
@@ -69,7 +74,7 @@ usermod -aG mail www-data
 chown root:mail /etc/ssmtp/ssmtp.conf
 chmod 665 /etc/ssmtp/ssmtp.conf
 
-mv /var/www/html/script/checkcert /etc/cron.daily
+cp /var/www/html/script/checkcert /etc/cron.daily
 chown root:root /etc/cron.daily/checkcert
 chmod +x /etc/cron.daily/checkcert
 
