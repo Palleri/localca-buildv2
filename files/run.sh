@@ -56,6 +56,7 @@ fi
 cp /tmp/src/index.php /var/www/html/index.php
 cp /tmp/src/settings.php /var/www/html/settings.php
 cp /tmp/src/style.css /var/www/html/style.css
+cp /tmp/src/files.php /var/www/html/files.php
 cp -R /tmp/bin /etc/
 cp /tmp/src/bg.jpg /var/www/html/bg.jpg
 rm -rf /etc/cron.daily/*
