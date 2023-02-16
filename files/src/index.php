@@ -72,7 +72,7 @@ if (isset($_POST['carenew']))
 ?>
 
 
-    <td><p><table class="tg" align=center border=0>
+    <td><p><table class="row-even" align=center border=0>
     <thead>
         <tr>
 	        <th align="center" colspan="3"><form action="files/ca.pem"><input type="submit" value="Download CA certificate" /></form><form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>"><input type='submit' name='carenew' value='Renew CA' onclick="return confirm('Are you sure you want to renew CA?')"> <?php echo " " .$CAexpiredate; ?></td></form></th>
@@ -169,7 +169,7 @@ if(isset($_POST['Renew'])){
 
 ?>
 
-<td></td>
+<table align="center" class="row-even"></td>
 <?php 
 // Show delete button if there is a file in files/
 if(!empty($file)) {

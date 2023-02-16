@@ -66,7 +66,8 @@ a.ca:hover {
 
 
 body {
-  background: url(bg.jpg) no-repeat center center fixed;
+  background-color: #383838;
+  /* background: url(bg.jpg) no-repeat center center fixed; */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -140,3 +141,18 @@ th {
 .tg .tg-0lax {
   text-align:left;vertical-align:top;
 }
+
+table {
+  border-collapse: collapse;
+}
+
+table.row-even tr:nth-child(even) {
+  background-color: #616161;
+  border-collapse: collapse;
+  color: rgb(100, 21, 21)
+  }
+table.row-odd tr:nth-child(odd) {
+    background-color: #474747;
+    border-collapse: collapse;
+    color: rgb(100, 21, 21)
+    }
