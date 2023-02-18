@@ -2,10 +2,12 @@
 # Localca
 ### Simple local certificate authority
 
-<img alt="logo" src="https://i.imgur.com/gGwTbEu.png">
+<img alt="logo" src="https://i.imgur.com/Iqs8eot.jpg">
 
-<img alt="logo" src="https://i.imgur.com/kWya4iK.png">
------------------------------------------------------------------------
+<img alt="logo" src="https://i.imgur.com/U7lR57H.jpg">
+
+
+
 # ONLY FOR INTERNAL ACCESS
 <b>DO NOT PUBLISH ON THE INTERNET.</b>
 
@@ -14,10 +16,10 @@
 <b>NOT CHECKED FOR BUGS OR VULNERABILITIES.</b>
 
 
------------------------------------------------------------------------
+
 ## Docker image
 
------------------------------------------------------------------------
+
 ### Bugs and fixes
 
 1. <s>Cronjob not working properly</s> <b>(Fixed 2023-01-27)</b>
