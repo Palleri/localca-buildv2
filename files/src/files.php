@@ -24,6 +24,14 @@
     .a {
         color: white;
     }
+    body {
+  background-color: #383838;
+  /* background: url(bg.jpg) no-repeat center center fixed; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 </style>
 <script>
     $(document).ready(function(){
