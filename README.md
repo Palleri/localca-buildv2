@@ -1,6 +1,6 @@
 
 # Localca
-## Simple local certificate authority
+### Simple local certificate authority
 
 <img alt="logo" src="https://i.imgur.com/gGwTbEu.png">
 
