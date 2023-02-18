@@ -1,6 +1,7 @@
 
-<img alt="logo" src="https://i.imgur.com/JwNEO4r.png">
+<img alt="logo" src="https://i.imgur.com/gGwTbEu.png">
 
+<img alt="logo" src="https://i.imgur.com/kWya4iK.png">
 -----------------------------------------------------------------------
 # ONLY FOR INTERNAL ACCESS
 <b>DO NOT PUBLISH ON THE INTERNET.</b>
