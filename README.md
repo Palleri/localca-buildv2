@@ -1,4 +1,7 @@
 
+# Localca
+## Simple local certificate authority
+
 <img alt="logo" src="https://i.imgur.com/gGwTbEu.png">
 
 <img alt="logo" src="https://i.imgur.com/kWya4iK.png">
